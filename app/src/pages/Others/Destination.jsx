@@ -11,7 +11,7 @@ const DestinationCard2 = ({ destination, onClick, incline = 'left' }) => (
     onClick={onClick}
     style={{ boxSizing: 'border-box' }}
   >
-    <div className={`w-full h-[400px] rounded-lg overflow-hidden mb-4 ${incline === 'left' ? 'transform -rotate-3' : 'transform rotate-3'}`}>
+    <div className={`w-full h-[400px]  overflow-hidden mb-4 ${incline === 'left' ? 'transform -rotate-3' : 'transform rotate-3'}`}>
       <img src={destination.image} alt={destination.title} className="w-full h-full object-cover" />
     </div>
     {/* Fixed content height and flex to align all titles at the same level */}
@@ -66,7 +66,7 @@ const DESTINATIONS = [
   },
   {
     id: 4,
-    image: '/images/news_canada_1.jpg',
+		image:"/images/img_image_6.png",
     title: 'Québec',
     rating: 4,
     description: 'Ville francophone, riche en histoire et en culture, idéale pour les nouveaux arrivants.',
@@ -77,7 +77,7 @@ const DESTINATIONS = [
   },
   {
     id: 5,
-    image: '/images/news_usa_1.jpg',
+		image:"/images/img_image_6.png",
     title: 'New York',
     rating: 5,
     description: 'La ville qui ne dort jamais, centre mondial de la culture, des affaires et des opportunités.',
@@ -88,7 +88,7 @@ const DESTINATIONS = [
   },
   {
     id: 6,
-    image: '/images/news_canada_2.jpg',
+		image:"/images/img_image_6.png",
     title: 'Montréal',
     rating: 4,
     description: 'Ville cosmopolite, mélange unique de cultures, festivals et gastronomie.',
@@ -144,15 +144,15 @@ const Destination = () => {
       <HeroSection />
       {/* Main Section */}
       {!selected && (
-        <div className="w-full max-w-6xl mx-auto px-4 py-16">
-          <div className="flex flex-col sm:flex-row items-start gap-6 mb-10">
+        <div className="w-full max-w-6xl mx-auto px-2 sm:px-4 py-8 sm:py-16">
+          <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 mb-8 sm:mb-10">
             <div>
-              <span className="text-sm font-bold text-[#1A1A1A] mb-1 block">Destination populaires</span>
-              <h2 className="text-3xl font-bold text-[#1A1A1A] mb-0">Destination Populaire de l'année pour vous</h2>
+              <span className="text-xs sm:text-sm font-bold text-[#1A1A1A] mb-1 block">Destination populaires</span>
+              <h2 className="text-xl sm:text-3xl font-bold text-[#1A1A1A] mb-0">Destination Populaire de l'année pour vous</h2>
             </div>
           </div>
           {/* Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-8 sm:gap-y-12 gap-x-4 sm:gap-x-8 mb-8 sm:mb-12">
             {paginated.map((dest, idx) => (
               <DestinationCard2
                 key={dest.id}
@@ -163,22 +163,21 @@ const Destination = () => {
             ))}
           </div>
           {/* Pagination */}
-        <div className="flex flex-row items-center justify-center gap-3 mt-12">
-          <span className="text-[#4974A0] font-barlow cursor-pointer">Premier</span>
-          <span className="text-[#4974A0] font-barlow cursor-pointer">{'<'}</span>
-          <span className="text-black font-barlow font-bold px-2">1</span>
-          <span className="text-[#4974A0] font-barlow cursor-pointer px-2">2</span>
-          <span className="text-[#4974A0] font-barlow cursor-pointer px-2">3</span>
-          <span className="text-[#4974A0] font-barlow cursor-pointer">{'>'}</span>
-          <span className="text-[#4974A0] font-barlow cursor-pointer">Dernier</span>
-        </div>
-          
+          <div className="flex flex-row items-center justify-center gap-2 sm:gap-3 mt-8 sm:mt-12">
+            <span className="text-[#4974A0] font-barlow cursor-pointer text-sm sm:text-base">Premier</span>
+            <span className="text-[#4974A0] font-barlow cursor-pointer text-sm sm:text-base">{'<'}</span>
+            <span className="text-black font-barlow font-bold px-2 text-sm sm:text-base">1</span>
+            <span className="text-[#4974A0] font-barlow cursor-pointer px-2 text-sm sm:text-base">2</span>
+            <span className="text-[#4974A0] font-barlow cursor-pointer px-2 text-sm sm:text-base">3</span>
+            <span className="text-[#4974A0] font-barlow cursor-pointer text-sm sm:text-base">{'>'}</span>
+            <span className="text-[#4974A0] font-barlow cursor-pointer text-sm sm:text-base">Dernier</span>
+          </div>
         </div>
       )}
 
       {/* Destination Details */}
       {selected && (
-        <div className="w-full max-w-6xl mx-auto px-4 py-12 relative overflow-x-visible">
+        <div className="w-full max-w-6xl mx-auto px-2 sm:px-4 py-8 sm:py-12 relative overflow-x-visible">
           {/* Background map images */}
           <img
             src="/images/map.svg"
@@ -193,29 +192,29 @@ const Destination = () => {
             style={{ minWidth: 320, maxWidth: 440, transform: 'scaleX(-1)' }}
           />
           {/* Big image */}
-          <div className="w-full h-64 sm:h-80 lg:h-96 rounded-lg overflow-hidden mb-8 mx-4 relative z-10">
+          <div className="w-full h-48 sm:h-64 lg:h-96  overflow-hidden mb-6 sm:mb-8 mx-0 sm:mx-4 relative z-10">
             <img src={selected.image} alt={selected.title} className="w-full h-full object-cover" />
           </div>
           {/* Details section with margin */}
-          <div className="flex flex-col lg:flex-row gap-8 mb-16 mx-4 relative z-10">
+          <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 mb-10 sm:mb-16 mx-0 sm:mx-4 relative z-10">
             {/* Left: title, desc, rating */}
-            <div className="flex-1 flex flex-col gap-4">
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A]">{selected.title}</h2>
-              <p className="text-base text-[#1A1A1A]">{selected.description}</p>
+            <div className="flex-1 flex flex-col gap-3 sm:gap-4">
+              <h2 className="text-xl sm:text-2xl font-bold text-[#1A1A1A]">{selected.title}</h2>
+              <p className="text-sm sm:text-base text-[#1A1A1A]">{selected.description}</p>
               <div className="flex items-center">
                 <RatingBar rating={selected.rating} size="large" />
-                <span className="ml-3 text-lg font-semibold text-[#1A1A1A]">{selected.rating}/5</span>
+                <span className="ml-2 sm:ml-3 text-base sm:text-lg font-semibold text-[#1A1A1A]">{selected.rating}/5</span>
               </div>
               <button
-                className="mt-2 bg-[#1A1A1A] text-white font-barlow font-semibold py-2 px-10  hover:bg-[#222] transition text-sm w-max"
+                className="mt-2 bg-[#1A1A1A] text-white font-barlow font-semibold py-2 px-6 sm:px-10 hover:bg-[#222] transition text-xs sm:text-sm w-max"
                 onClick={() => navigate('/contact')}
               >
                 Contacter Nous
               </button>
             </div>
             {/* Right: map only */}
-            <div className="flex-1 flex flex-col items-center">
-              <div className="w-full h-56 rounded overflow-hidden border">
+            <div className="flex-1 flex flex-col items-center mt-6 lg:mt-0">
+              <div className="w-full h-40 sm:h-56  overflow-hidden border">
                 <iframe
                   src={selected.map}
                   title="Map"
@@ -230,33 +229,33 @@ const Destination = () => {
             </div>
           </div>
           {/* Guide touristique section */}
-          <div className="w-full flex flex-col items-center mb-16 mx-4 relative z-10">
-            <h3 className="text-4xl sm:text-5xl font-bold text-[#1A1A1A] text-center mb-2">Guide touristique vous accompagnant</h3>
-            <p className="text-base text-[#1A1A1A] text-center mb-6 max-w-2xl">
+          <div className="w-full flex flex-col items-center mb-10 sm:mb-16 mx-0 sm:mx-4 relative z-10">
+            <h3 className="text-2xl sm:text-4xl font-bold text-[#1A1A1A] text-center mb-2">Guide touristique vous accompagnant</h3>
+            <p className="text-sm sm:text-base text-[#1A1A1A] text-center mb-4 sm:mb-6 max-w-2xl">
               Nos guides expérimentés vous accompagnent à chaque étape de votre voyage pour une expérience inoubliable et sécurisée.
             </p>
-            <div className="flex flex-row gap-12 justify-center my-7 items-center">
-              <img src={selected.guide} alt="Guide" className="w-72 h-96 object-cover shadow-lg -rotate-6" />
-              <img src={selected.place} alt="Place" className="w-72 h-96 object-cover shadow-lg ml-5 rotate-6" />
+            <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 justify-center my-4 sm:my-7 items-center">
+              <img src={selected.guide} alt="Guide" className="w-40 sm:w-72 h-56 sm:h-96 object-cover shadow-lg -rotate-6" />
+              <img src={selected.place} alt="Place" className="w-40 sm:w-72 h-56 sm:h-96 object-cover shadow-lg sm:ml-5 rotate-6" />
             </div>
           </div>
           {/* Avis section */}
-          <div className="w-full flex flex-col mb-8 mx-4 relative z-10">
-            <div className='flex flex-row justify-between gap-2 items-center mb-8'>
-                <div className='w-[50%]'>
-                    <span className="text-sm font-barlow text-[#1A1A1A]">Informations clés, conseils pratiques</span>
-                     <h3 className="text-4xl sm:text-5xl font-bold text-[#1A1A1A] mb-10">Avis vérifiés pour bien préparer votre voyage</h3>
+          <div className="w-full flex flex-col mb-6 sm:mb-8 mx-0 sm:mx-4 relative z-10">
+            <div className='flex flex-col sm:flex-row justify-between gap-2 items-center mb-6 sm:mb-8'>
+                <div className='w-full sm:w-[50%]'>
+                    <span className="text-xs sm:text-sm font-barlow text-[#1A1A1A]">Informations clés, conseils pratiques</span>
+                     <h3 className="text-2xl sm:text-4xl font-bold text-[#1A1A1A] mb-4 sm:mb-10">Avis vérifiés pour bien préparer votre voyage</h3>
                 </div>
-                <p className='text-sm font-barlow w-[30%] text-[#1A1A1A]'>Découvrez les expériences authentiques de voyageurs qui ont déjà franchi le pas .
+                <p className='text-xs sm:text-sm font-barlow w-full sm:w-[30%] text-[#1A1A1A]'>Découvrez les expériences authentiques de voyageurs qui ont déjà franchi le pas .
                 Parce que rien ne vaut l’avis de ceux qui ont déjà vécu l’aventure, nous avons rassemblé les témoignages de voyageurs qui ont exploré cette destination avant vous.</p>
             </div>
 
             {REVIEWS.map((r, idx) => (
               <div
                 key={r.id}
-                className={`flex flex-col md:flex-row md:gap-14 ${idx % 2 === 1 ? 'md:flex-row-reverse' : ''} items-center gap-8`}
+                className={`flex flex-col md:flex-row md:gap-8 lg:gap-14 ${idx % 2 === 1 ? 'md:flex-row-reverse' : ''} items-center gap-6 sm:gap-8`}
               >
-                <div className={`w-full md:w-[260px] h-[400px] overflow-hidden ${idx % 2 === 1 ? 'transform -rotate-3' : 'transform rotate-3'}`}>
+                <div className={`w-full md:w-[180px] lg:w-[260px] h-[260px] md:h-[400px] overflow-hidden ${idx % 2 === 1 ? 'transform -rotate-3' : 'transform rotate-3'}`}>
                   <img
                     src={r.image}
                     alt={r.name}
@@ -265,20 +264,20 @@ const Destination = () => {
                   />
                 </div>
                 <div className="flex flex-col items-start w-full md:flex-1">
-                  <span className="text-lg font-semibold text-[#1A1A1A]">{r.name}</span>
+                  <span className="text-base sm:text-lg font-semibold text-[#1A1A1A]">{r.name}</span>
                   <div className="flex items-center mb-2">
                     <RatingBar rating={r.rating} size="medium" />
-                    <span className="ml-2 text-sm text-[#1A1A1A] font-semibold">{r.rating}/5</span>
+                    <span className="ml-2 text-xs sm:text-sm text-[#1A1A1A] font-semibold">{r.rating}/5</span>
                   </div>
-                  <p className="text-base text-[#1A1A1A]">{r.review}</p>
+                  <p className="text-xs sm:text-base text-[#1A1A1A]">{r.review}</p>
                 </div>
               </div>
             ))}
           </div>
           {/* Back button */}
-          <div className="flex justify-center mt-8 mx-4 relative z-10">
+          <div className="flex justify-center mt-6 sm:mt-8 mx-0 sm:mx-4 relative z-10">
             <button
-              className="text-[#1A1A1A] font-barlow font-semibold text-base hover:underline flex items-center gap-2"
+              className="text-[#1A1A1A] font-barlow font-semibold text-sm sm:text-base hover:underline flex items-center gap-2"
               onClick={() => setSelectedId(null)}
             >
               <svg className="w-4 h-4 inline-block" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -295,3 +294,4 @@ const Destination = () => {
 };
 
 export default Destination;
+

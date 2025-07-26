@@ -135,17 +135,17 @@ const Faq = () => {
 				className="absolute left-0 bottom-0 w-[220px] opacity-30 pointer-events-none z-0"
 			/>
 			{/* Main FAQ Section */}
-			<div className="flex-1 w-full px-0 py-12 relative z-10 flex flex-col lg:flex-row gap-0">
+			<div className="flex-1 w-full px-2 sm:px-4 py-8 sm:py-12 relative z-10 flex flex-col lg:flex-row gap-0">
 				{/* Left: Questions */}
-				<div className="w-full lg:w-3/5 flex flex-col justify-start px-4">
-					<h2 className="text-3xl font-bold mb-4 text-global-6 text-left">
+				<div className="w-full lg:w-3/5 flex flex-col justify-start">
+					<h2 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-4 text-global-6 text-left">
 						Questions fréquentes
 					</h2>
-					<p className="text-base text-global-4 mb-8 text-left">
+					<p className="text-sm sm:text-base text-global-4 mb-4 sm:mb-8 text-left">
 						Vous avez une question ? Consultez notre FAQ pour trouver rapidement une
 						réponse.
 					</p>
-					<div className="flex flex-col gap-4">
+					<div className="flex flex-col gap-3 sm:gap-4">
 						{paginatedFaqs.map((faq, idx) => {
 							const realIdx = (page - 1) * PAGE_SIZE + idx;
 							return (
@@ -154,11 +154,11 @@ const Faq = () => {
 									className="bg-white rounded-lg shadow transition border border-[#4974A0]/20"
 								>
 									<button
-										className="w-full flex justify-between items-center px-6 py-4 text-left focus:outline-none"
+										className="w-full flex justify-between items-center px-4 sm:px-6 py-3 sm:py-4 text-left focus:outline-none"
 										onClick={() => toggle(realIdx)}
 										aria-expanded={openIndex === realIdx}
 									>
-										<span className="text-lg font-semibold text-global-6">
+										<span className="text-base sm:text-lg font-semibold text-global-6">
 											{faq.question}
 										</span>
 										<svg
@@ -178,7 +178,7 @@ const Faq = () => {
 										</svg>
 									</button>
 									{openIndex === realIdx && (
-										<div className="px-6 pb-4 text-global-2 text-base">
+										<div className="px-4 sm:px-6 pb-3 sm:pb-4 text-global-2 text-sm sm:text-base">
 											{faq.answer}
 										</div>
 									)}
@@ -187,9 +187,9 @@ const Faq = () => {
 						})}
 					</div>
 					{/* Pagination */}
-					<div className="flex flex-row items-center justify-start gap-3 mt-10">
+					<div className="flex flex-row items-center justify-start gap-2 sm:gap-3 mt-8 sm:mt-10">
 						<button
-							className={`text-[#4974A0] font-barlow cursor-pointer px-2 py-1 rounded ${
+							className={`text-[#4974A0] font-barlow cursor-pointer px-2 py-1 rounded text-xs sm:text-base ${
 								page === 1 ? 'opacity-50 pointer-events-none' : ''
 							}`}
 							onClick={() => goToPage(1)}
@@ -197,7 +197,7 @@ const Faq = () => {
 							Premier
 						</button>
 						<button
-							className={`text-[#4974A0] font-barlow cursor-pointer px-2 py-1 rounded ${
+							className={`text-[#4974A0] font-barlow cursor-pointer px-2 py-1 rounded text-xs sm:text-base ${
 								page === 1 ? 'opacity-50 pointer-events-none' : ''
 							}`}
 							onClick={prevPage}
@@ -207,7 +207,7 @@ const Faq = () => {
 						{Array.from({ length: totalPages }, (_, i) => (
 							<button
 								key={i}
-								className={`font-barlow px-2 py-1 rounded ${
+								className={`font-barlow px-2 py-1 rounded text-xs sm:text-base ${
 									page === i + 1
 										? 'bg-[#4974A0] text-white font-bold'
 										: 'text-[#4974A0] hover:bg-[#4974A0]/10'
@@ -218,7 +218,7 @@ const Faq = () => {
 							</button>
 						))}
 						<button
-							className={`text-[#4974A0] font-barlow cursor-pointer px-2 py-1 rounded ${
+							className={`text-[#4974A0] font-barlow cursor-pointer px-2 py-1 rounded text-xs sm:text-base ${
 								page === totalPages ? 'opacity-50 pointer-events-none' : ''
 							}`}
 							onClick={nextPage}
@@ -226,7 +226,7 @@ const Faq = () => {
 							{'>'}
 						</button>
 						<button
-							className={`text-[#4974A0] font-barlow cursor-pointer px-2 py-1 rounded ${
+							className={`text-[#4974A0] font-barlow cursor-pointer px-2 py-1 rounded text-xs sm:text-base ${
 								page === totalPages ? 'opacity-50 pointer-events-none' : ''
 							}`}
 							onClick={() => goToPage(totalPages)}
@@ -243,6 +243,12 @@ const Faq = () => {
 						/>
 					</div>
 				</div>
+				{/* Mobile: hide images below FAQ */}
+				{/* <div className="flex lg:hidden w-full justify-center mt-8">
+					<div className="w-full max-w-xs">
+						<OverlappedImages images={overlappedImages} />
+					</div>
+				</div> */}
 			</div>
 			<Footer />
 		</div>

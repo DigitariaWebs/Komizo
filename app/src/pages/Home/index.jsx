@@ -64,48 +64,49 @@ const Home = () => {
             />
           </div>
 
-          {/* Top-right Hero Image - increased height and width */}
-          <img 
-            src="/images/img_rectangle_32.png" 
-            alt="Hero Image" 
-            className="absolute top-0 right-0 w-[40%] h-[120vh] object-cover z-5"
-          />
-
-          {/* Header - at the same level as the top-right image */}
-          <div className="relative z-10 mt-[26px] sm:mt-[39px] md:mt-[52px]">
-            <Header />
-          </div>
-
-          {/* Hero Content - Adjusted to accommodate larger image */}
-          <div className="relative z-10 w-[60%] h-full flex flex-col justify-center px-4 sm:px-6 lg:px-[56px] py-[40px] sm:py-[60px] lg:py-[80px]">
-            {/* Main Heading - Reduced text size */}
-            <h1 className="text-[25px] sm:text-[37px] md:text-[49px] lg:text-[61px] xl:text-[73px] font-quattrocento font-bold leading-[36px] sm:leading-[48px] md:leading-[60px] lg:leading-[72px] xl:leading-[84px] text-left text-global-6 capitalize mb-[24px] sm:mb-[32px] lg:mb-[40px]">
-              une orientation sur-mesure avec Komizi
-            </h1>
-
-            {/* Description Text */}
-            <p className="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] font-quattrocentosans font-normal leading-[18px] sm:leading-[20px] md:leading-[24px] lg:leading-[28px] text-left text-global-5 mb-[32px] sm:mb-[40px] lg:mb-[48px] pr-[20px] sm:pr-[40px] lg:pr-[60px]">
-              KOMIZI (Come Easy) est une entreprise qui accompagne les voyageurs du monde entier pour faire les meilleurs choix, que ce soit pour visiter un nouveau pays pour la première fois ou pour immigrer durablement ailleurs.
-              Le site fournit toutes les informations et conseils nécessaires pour une immigration réussie, dans tous les pays du monde, afin de faciliter le passage d'un pays à un autre en toute simplicité. C'est un réseau mondial de voyageurs connectés, pour découvrir les meilleures destinations et accéder librement au monde.
-            </p>
-
-            {/* Button and Get Started Row */}
-            <div className="flex items-center justify-between gap-[24px] sm:gap-[32px] lg:gap-[40px] mb-[40px] sm:mb-[60px] lg:mb-[80px]">
-              <Button 
-                variant="primary" 
-                className="flex-shrink-0"
-                size="large"
-              >
-                Explorer le monde
-              </Button>
-              
-              <div className="flex items-center gap-[12px] sm:gap-[16px] lg:gap-[20px]">
-                <img 
-                  src="/images/img_group_6.svg" 
-                  alt="Get Started Icon" 
-                  className="w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] lg:w-[60px] lg:h-[60px] flex-shrink-0"
-                />
+          {/* Responsive Hero Section */}
+          <div className="flex flex-col-reverse md:flex-row w-full relative">
+            {/* Left/Text Section (on desktop), below image on mobile */}
+            <div className="z-10 flex-1 flex flex-col justify-center px-4 sm:px-6 lg:px-[56px] py-[40px] sm:py-[60px] lg:py-[80px]">
+              {/* Header - hide logo on mobile, pass prop */}
+              <div className="z-20 mb-6">
+                <Header hideLogoOnMobile menuFullWidthOnMobile />
               </div>
+              {/* Main Heading */}
+              <h1 className="text-[25px] sm:text-[37px] md:text-[49px] lg:text-[61px] xl:text-[73px] font-quattrocento font-bold leading-[36px] sm:leading-[48px] md:leading-[60px] lg:leading-[72px] xl:leading-[84px] text-left text-global-6 capitalize mb-[18px] sm:mb-[26px] lg:mb-[34px]">
+                une orientation sur-mesure avec Komizi
+              </h1>
+              {/* Description Text */}
+              <p className="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] font-quattrocentosans font-normal leading-[18px] sm:leading-[20px] md:leading-[24px] lg:leading-[28px] text-left text-global-5 mb-[24px] sm:mb-[32px] lg:mb-[40px] pr-[20px] sm:pr-[40px] lg:pr-[60px]">
+                KOMIZI (Come Easy) est une entreprise qui accompagne les voyageurs du monde entier pour faire les meilleurs choix, que ce soit pour visiter un nouveau pays pour la première fois ou pour immigrer durablement ailleurs.
+                Le site fournit toutes les informations et conseils nécessaires pour une immigration réussie, dans tous les pays du monde, afin de faciliter le passage d'un pays à un autre en toute simplicité. C'est un réseau mondial de voyageurs connectés, pour découvrir les meilleures destinations et accéder librement au monde.
+              </p>
+              {/* Button and Get Started Row */}
+              <div className="flex items-center justify-between gap-[24px] sm:gap-[32px] lg:gap-[40px] mb-[40px] sm:mb-[60px] lg:mb-[80px]">
+                <Button 
+                  variant="primary" 
+                  className="flex-shrink-0"
+                  size="large"
+                >
+                  Explorer le monde
+                </Button>
+                <div className="flex items-center gap-[12px] sm:gap-[16px] lg:gap-[20px]">
+                  <img 
+                    src="/images/img_group_6.svg" 
+                    alt="Get Started Icon" 
+                    className="w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] lg:w-[60px] lg:h-[60px] flex-shrink-0"
+                  />
+                </div>
+              </div>
+            </div>
+            {/* Hero Image - on top for mobile, right for desktop */}
+            <div className="relative w-full md:w-[40%] h-[320px] md:h-auto flex-shrink-0">
+              <img 
+                src="/images/img_rectangle_32.png" 
+                alt="Hero Image" 
+                className="w-full h-full object-cover z-5 md:absolute md:top-0 md:right-0 md:w-[100%] md:h-[120vh]"
+                style={{ minHeight: 200, maxHeight: 600 }}
+              />
             </div>
           </div>
         </div>
@@ -118,44 +119,55 @@ const Home = () => {
           <div className="flex flex-col-reverse lg:flex-row justify-center items-center w-full">
             <div className="w-full lg:w-[90%]">
               <div className="flex flex-col gap-[10px] sm:gap-[15px] lg:gap-[20px] justify-start items-start w-full">
-                {/* On small screens, show image above title/text */}
+                {/* On small screens, show title, then image, then description */}
                 <div className="block lg:hidden w-full mb-6">
+                  <p className="text-[12px] sm:text-[21px] lg:text-[28px] font-quattrocento font-bold leading-[16px] sm:leading-[24px] lg:leading-[32px] text-left text-global-7 mb-2">
+                    À propos
+                  </p>
+                  <h2 className="text-[18px] sm:text-[24px] font-quattrocento font-bold leading-[22px] sm:leading-[28px] text-left text-global-5 capitalize mb-4">
+                    Komizi — le compagnon de vos décisions de voyage
+                  </h2>
                   <OverlappedImages 
                     images={aboutImages}
                     decorativeElement={decorativeElement}
-                    className="w-full"
+                    className="w-full mb-4"
                   />
+                  <p className="text-[12px] sm:text-[16px] font-quattrocento font-normal leading-[18px] sm:leading-[24px] text-left text-global-4">
+                    Komizi (Come Easy) C'est un guide de confiance, un conseiller indépendant qui accompagne celles et ceux qui souhaitent visiter un nouveau pays ou envisagent une immigration. Grâce à une information claire, des conseils pratiques et un accompagnement humain, Komizi aide les voyageurs du monde entier à faire les bons choix, éviter les pièges et franchir les frontières en toute sérénité.
+                    <br /><br />
+                    Notre mission : rendre chaque départ plus simple, plus sûr et plus conscient — d'un pays à l'autre, sans barrière.
+                  </p>
                 </div>
-                <p className="text-[12px] sm:text-[21px] lg:text-[28px] font-quattrocento font-bold leading-[16px] sm:leading-[24px] lg:leading-[32px] text-left text-global-7">
-                  À propos
-                </p>
-                <div className="relative w-full flex flex-col lg:flex-row justify-start items-start gap-8 lg:gap-0">
-                  {/* Left Content - Images with heading above (desktop only) */}
-                  <div className="hidden lg:block w-full lg:w-[48%] lg:pr-8 order-2 lg:order-1">
-                    <h2 className="text-[18px] sm:text-[24px] lg:text-[32px] font-quattrocento font-bold leading-[22px] sm:leading-[28px] lg:leading-[36px] text-left text-global-5 capitalize mb-[24px] sm:mb-[32px] lg:mb-[40px]">
-                      Komizi — le compagnon de vos décisions de voyage
-                    </h2>
-                    <OverlappedImages 
-                      images={aboutImages}
-                      decorativeElement={decorativeElement}
-                      className="w-full"
-                    />
-                  </div>
-                  {/* Right Content - Description positioned next to img_image_6 */}
-                  <div className="w-full lg:w-[52%] lg:pl-8 order-1 lg:order-2 flex flex-col items-start">
-                    {/* On mobile, show title below image */}
-                    <h2 className="block lg:hidden text-[18px] sm:text-[24px] lg:text-[32px] font-quattrocento font-bold leading-[22px] sm:leading-[28px] lg:leading-[36px] text-left text-global-5 capitalize mb-[24px] sm:mb-[32px] lg:mb-[40px]">
-                      Komizi — le compagnon de vos décisions de voyage
-                    </h2>
-                    <div className="lg:mt-[25%]">
-                      <p className="text-[12px] sm:text-[16px] lg:text-[20px] font-quattrocento font-normal leading-[18px] sm:leading-[24px] lg:leading-[30px] text-left text-global-4">
-                        Komizi (Come Easy) C'est un guide de confiance, un conseiller indépendant qui accompagne celles et ceux qui souhaitent visiter un nouveau pays ou envisagent une immigration. Grâce à une information claire, des conseils pratiques et un accompagnement humain, Komizi aide les voyageurs du monde entier à faire les bons choix, éviter les pièges et franchir les frontières en toute sérénité.
-                        <br /><br />
-                        Notre mission : rendre chaque départ plus simple, plus sûr et plus conscient — d'un pays à l'autre, sans barrière.
-                      </p>
+                {/* Desktop layout */}
+                <div className="hidden lg:flex flex-col gap-[10px] w-full">
+                  <p className="text-[12px] sm:text-[21px] lg:text-[28px] font-quattrocento font-bold leading-[16px] sm:leading-[24px] lg:leading-[32px] text-left text-global-7">
+                    À propos
+                  </p>
+                  <div className="relative w-full flex flex-row justify-start items-start gap-8">
+                    {/* Left Content - Images with heading above (desktop only) */}
+                    <div className="w-full lg:w-[48%] lg:pr-8 order-2 lg:order-1">
+                      <h2 className="text-[18px] sm:text-[24px] lg:text-[32px] font-quattrocento font-bold leading-[22px] sm:leading-[28px] lg:leading-[36px] text-left text-global-5 capitalize mb-[24px] sm:mb-[32px] lg:mb-[40px]">
+                        Komizi — le compagnon de vos décisions de voyage
+                      </h2>
+                      <OverlappedImages 
+                        images={aboutImages}
+                        decorativeElement={decorativeElement}
+                        className="w-full"
+                      />
+                    </div>
+                    {/* Right Content - Description positioned next to img_image_6 */}
+                    <div className="w-full lg:w-[52%] lg:pl-8 order-1 lg:order-2 flex flex-col items-start">
+                      <div className="lg:mt-[25%]">
+                        <p className="text-[12px] sm:text-[16px] lg:text-[20px] font-quattrocento font-normal leading-[18px] sm:leading-[24px] lg:leading-[30px] text-left text-global-4">
+                          Komizi (Come Easy) C'est un guide de confiance, un conseiller indépendant qui accompagne celles et ceux qui souhaitent visiter un nouveau pays ou envisagent une immigration. Grâce à une information claire, des conseils pratiques et un accompagnement humain, Komizi aide les voyageurs du monde entier à faire les bons choix, éviter les pièges et franchir les frontières en toute sérénité.
+                          <br /><br />
+                          Notre mission : rendre chaque départ plus simple, plus sûr et plus conscient — d'un pays à l'autre, sans barrière.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
+                {/* End Desktop layout */}
               </div>
             </div>
           </div>
@@ -316,7 +328,7 @@ const Home = () => {
                 <img 
                   src="/images/img_image_28.png" 
                   alt="Blog Image" 
-                  className="w-full h-[220px] sm:h-[320px] lg:h-[360px] object-cover overflow-visible transform lg:rotate-6"
+                  className="w-full h-[220px] sm:h-[320px] lg:h-[360px] object-cover  transform lg:rotate-6"
                   style={{ minHeight: '180px', maxHeight: '380px' }}
                 />
               </div>
@@ -373,8 +385,37 @@ const Home = () => {
               />
             </div>
           </div>
-          {/* Left Content */}
-          <div className="flex flex-col gap-[14px] sm:gap-[18px] lg:gap-[22px] justify-center items-start w-full lg:w-[38%]">
+          {/* md-only: Image left, text right */}
+          <div className="hidden md:flex lg:hidden w-full flex-row items-center justify-center">
+            {/* Image left */}
+            <div className="w-[40%] flex justify-end pr-6">
+              <img
+                src="/images/img_image_24.png"
+                alt="Testimonial Image 2"
+                className="w-full max-w-xs h-[220px] sm:h-[320px] object-cover"
+              />
+            </div>
+            {/* Text right */}
+            <div className="w-[60%] flex flex-col gap-[14px] sm:gap-[18px] lg:gap-[22px] justify-center items-start">
+              <p className="text-[10px] sm:text-[14px] lg:text-[16px] font-quattrocento font-bold leading-[12px] sm:leading-[18px] lg:leading-[22px] text-left text-global-2">
+                Testimonials
+              </p>
+              <h2 className="text-[18px] sm:text-[22px] lg:text-[28px] font-quattrocento font-bold leading-[20px] sm:leading-[28px] lg:leading-[36px] text-left text-global-2 w-full">
+                Ce qu'ils disent de nous ?
+              </h2>
+              <p className="text-[10px] sm:text-[13px] lg:text-[15px] font-quattrocentosans font-normal leading-[16px] sm:leading-[20px] lg:leading-[22px] text-left text-global-2 w-full max-w-[520px]">
+                Lorem ipsum dolor sit amet consectetur. Urna nibh sem risus nec interdum habitant. Porttitor augue enim turpis maecenas et adipiscing. Dis ipsum vitae ultrices vulputate sem quis dui eu. Amet tincidunt est elementum fermentum tellus velit. Et dolor risus tempor dui velit. Eget aenean placerat ac feugiat amet ac risus mus. In phasellus dignissim sed diam praesent risus auctor gravida. Suspendisse varius id platea lectus quis enim sed morbi. Enim ut mauris id sed nam amet donec pulvinar. Et enim urna morbi est tellus pharetra. Et interdum massa sit purus est id hac ultricies ac. Facilisis eget vitae odio libero sit enim at donec ultrices.
+              </p>
+              <div className="flex items-center mt-1">
+                <RatingBar rating={5} size="medium" />
+                <p className="text-[10px] sm:text-[14px] lg:text-[16px] font-quattrocento font-bold leading-[12px] sm:leading-[18px] lg:leading-[22px] text-left text-global-2 ml-[12px] sm:ml-[18px] lg:ml-[24px]">
+                  5/5
+                </p>
+              </div>
+            </div>
+          </div>
+          {/* Left Content (default: mobile and lg+) */}
+          <div className="flex flex-col gap-[14px] sm:gap-[18px] lg:gap-[22px] justify-center items-start w-full lg:w-[38%] md:hidden lg:flex">
             <p className="text-[10px] sm:text-[14px] lg:text-[16px] font-quattrocento font-bold leading-[12px] sm:leading-[18px] lg:leading-[22px] text-left text-global-2">
               Testimonials
             </p>
@@ -393,7 +434,7 @@ const Home = () => {
           </div>
         </div>
         {/* Mobile: show Testimonial Image 2 below text, hide Testimonial Image 1 */}
-        <div className="flex lg:hidden w-full justify-center mt-8">
+        <div className="flex md:hidden w-full justify-center mt-8">
           <img
             src="/images/img_image_24.png"
             alt="Testimonial Image 2"
