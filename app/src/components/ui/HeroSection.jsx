@@ -49,14 +49,14 @@ const HeroSection = ({ customTitle, customDescription }) => {
       />
       {/* Navbar */}
       <nav className="absolute top-0 left-0 w-full flex justify-start px-2 sm:px-4 md:px-8 py-3 sm:py-6 z-10">
-        <div className="flex gap-2 sm:gap-4 md:gap-6 lg:gap-8 flex-wrap">
+        <div className="flex gap-2 md:ml-2 md:mt-2 sm:gap-4 md:gap-6 lg:gap-8 flex-wrap">
           {NAV_LINKS.map(link => (
             <button
               key={link.path}
               onClick={() => navigate(link.path)}
               className={`font-barlow transition-colors duration-150 ${
                 path === link.path ? 'font-semibold text-white' : 'text-white font-normal'
-              } text-[10px] xs:text-xs sm:text-base md:text-lg`}
+              } text-[8px] xs:text-xs sm:text-base`}
               style={{ background: 'none', border: 'none', outline: 'none', padding: 0, cursor: 'pointer' }}
             >
               {link.text}
