@@ -28,7 +28,7 @@ const Header = ({ hideLogoOnMobile = false }) => {
     { text: 'Accueil', path: '/' },
     { text: 'À propos', path: '/about' },
     { text: 'Destination', path: '/destination' },
-    { text: 'Actualité', path: '/news' },
+    { text: 'Conseil', path: '/news' },
     { text: 'Faq', path: '/faq' },
     { text: 'Contact', path: '/contact' }
   ];
@@ -63,7 +63,7 @@ const Header = ({ hideLogoOnMobile = false }) => {
               { text: 'Accueil', path: '/' },
               { text: 'À propos', path: '/about' },
               { text: 'Destination', path: '/destination' },
-              { text: 'Actualité', path: '/news' },
+              { text: 'Conseil', path: '/news' },
               { text: 'Faq', path: '/faq' },
               { text: 'Contact', path: '/contact' }
             ].map((item, index) => (

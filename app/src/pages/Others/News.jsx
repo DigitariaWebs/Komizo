@@ -1,63 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import HeroSection from '../../components/ui/HeroSection';
 import Footer from '../../components/common/Footer';
-
-const NEWS = [
-	{
-		id: 1,
-		image: '/images/img_image_6.png',
-		date: '2024-06-01',
-		publisher: 'Radio Canada',
-		title: "Le Canada facilite l'immigration pour les étudiants étrangers",
-		content:
-			"Le gouvernement canadien a annoncé de nouvelles mesures pour simplifier le processus d'immigration des étudiants internationaux. Ces changements visent à attirer davantage de talents et à renforcer la diversité culturelle du pays. Les étudiants bénéficieront désormais de délais de traitement plus courts et de nouvelles opportunités de résidence permanente après leurs études. Cette initiative s'inscrit dans la volonté du Canada de rester une destination privilégiée pour l'éducation supérieure.",
-	},
-	{
-		id: 2,
-		image: '/images/img_image_6.png',
-		date: '2024-05-28',
-		publisher: 'Le Monde',
-		title: 'Les États-Unis assouplissent les règles de visa pour les travailleurs qualifiés',
-		content:
-			"Les autorités américaines ont annoncé un assouplissement des règles de visa pour les travailleurs qualifiés dans les secteurs technologiques et médicaux. Cette mesure vise à répondre à la pénurie de main-d'œuvre et à soutenir la croissance économique. Les candidats bénéficieront de procédures accélérées et de quotas élargis pour certains métiers en forte demande.",
-	},
-	{
-		id: 3,
-		image: '/images/img_image_6.png',
-		date: '2024-05-25',
-		publisher: 'La Presse',
-		title: 'Nouvelles opportunités pour les francophones au Canada',
-		content:
-			"Le Canada lance un nouveau programme destiné à encourager l'immigration francophone en dehors du Québec. Ce programme offre des avantages spécifiques, notamment un accompagnement personnalisé et des aides à l'installation pour les nouveaux arrivants francophones.",
-	},
-	{
-		id: 4,
-		image: '/images/img_image_6.png',
-		date: '2024-05-20',
-		publisher: 'France 24',
-		title: 'Étudier aux USA : les universités américaines rouvrent leurs portes',
-		content:
-			"Après deux ans de restrictions liées à la pandémie, les universités américaines accueillent à nouveau les étudiants internationaux. Les procédures de visa sont simplifiées et de nouveaux programmes de bourses sont proposés pour attirer les talents du monde entier.",
-	},
-	{
-		id: 5,
-		image: '/images/img_image_6.png',
-		date: '2024-05-15',
-		publisher: 'CBC News',
-		title: 'Le Québec augmente ses quotas d\'immigration pour 2024',
-		content:
-			"Le gouvernement du Québec a décidé d'augmenter le nombre de nouveaux arrivants pour l'année 2024. Cette décision vise à répondre aux besoins du marché du travail et à soutenir la croissance démographique de la province.",
-	},
-	{
-		id: 6,
-		image: '/images/img_image_6.png',
-		date: '2024-05-10',
-		publisher: 'New York Times',
-		title: 'Les USA lancent un portail d\'information pour les nouveaux immigrants',
-		content:
-			"Un nouveau portail en ligne a été lancé pour aider les immigrants à s'installer aux États-Unis. Il propose des guides pratiques, des informations sur les démarches administratives et des conseils pour réussir son intégration.",
-	},
-];
+import { fetchUSAndCanadaNews, fetchImmigrationNews, getFallbackNews } from '../../services/newsService';
 
 function getShortContent(content, wordCount = 14) {
 	const words = content.split(' ');
@@ -72,17 +16,57 @@ const PAGE_SIZE = 6;
 const News = () => {
 	const [selectedNewsId, setSelectedNewsId] = useState(null);
 	const [page, setPage] = useState(1);
+	const [news, setNews] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [newsSource, setNewsSource] = useState('trending'); // 'trending' or 'immigration'
 
-	const selectedNews = NEWS.find((n) => n.id === selectedNewsId);
-	const relatedNews = NEWS.filter((n) => n.id !== selectedNewsId).slice(0, 3);
+	// Load news data on component mount
+	useEffect(() => {
+		const loadNews = async () => {
+			setLoading(true);
+			try {
+				console.log('Loading news with source:', newsSource);
+				let newsData = [];
+				
+				if (newsSource === 'trending') {
+					// Try to fetch real trending news from US and Canada
+					newsData = await fetchUSAndCanadaNews();
+				} else {
+					// Fetch immigration-specific news
+					newsData = await fetchImmigrationNews();
+				}
+				
+				console.log('Fetched news data:', newsData);
+				
+				// If no data from API, use fallback data
+				if (newsData.length === 0) {
+					console.log('Using fallback news data');
+					newsData = getFallbackNews();
+				}
+				
+				setNews(newsData);
+			} catch (error) {
+				console.error('Error loading news:', error);
+				// Use fallback data if there's an error
+				setNews(getFallbackNews());
+			} finally {
+				setLoading(false);
+			}
+		};
 
-	const totalPages = Math.ceil(NEWS.length / PAGE_SIZE);
-	const paginatedNews = NEWS.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+		loadNews();
+	}, [newsSource]);
+
+	const selectedNews = news.find((n) => n.id === selectedNewsId);
+	const relatedNews = news.filter((n) => n.id !== selectedNewsId).slice(0, 3);
+
+	const totalPages = Math.ceil(news.length / PAGE_SIZE);
+	const paginatedNews = news.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
 	return (
 		<div className="w-full min-h-screen flex flex-col bg-global-2">
 			<HeroSection
-				customTitle="Restez à jour avec les dernières actualités"
+				customTitle="Conseil : Restez à jour avec les dernières actualités"
 				customDescription="Découvrez les dernières nouvelles, conseils et inspirations sur l'immigration et les voyages au Canada, aux USA et ailleurs."
 			/>
 
@@ -99,7 +83,7 @@ const News = () => {
 							<svg className="w-4 h-4 inline-block" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
 								<path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
 							</svg>
-							Retour à la liste des actualités
+							Retour aux conseils
 						</button>
 						<div className="mb-1 sm:mb-2 text-xs text-global-4">
 							{selectedNews.date} • {selectedNews.publisher}
@@ -231,14 +215,47 @@ const News = () => {
 			{/* News Cards Grid */}
 			{!selectedNews && (
 				<div className="flex-1 w-full max-w-6xl mx-auto px-2 sm:px-4 py-8 sm:py-12">
+					{/* News Source Toggle */}
+					<div className="flex gap-4 mb-6">
+						<button
+							onClick={() => setNewsSource('trending')}
+							className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+								newsSource === 'trending'
+									? 'bg-[#4974A0] text-white'
+									: 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+							}`}
+						>
+							Actualités Tendances US/Canada
+						</button>
+						<button
+							onClick={() => setNewsSource('immigration')}
+							className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+								newsSource === 'immigration'
+									? 'bg-[#4974A0] text-white'
+									: 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+							}`}
+						>
+							Immigration & Voyage
+						</button>
+					</div>
+
 					{/* Yellow Section Title */}
 					<p className="text-xs sm:text-[12px] md:text-[18px] font-quattrocento font-bold text-global-7 mb-1 sm:mb-2">
-						Notre News
+						Nos Conseils
 					</p>
 					<h2 className="text-lg sm:text-2xl font-bold mb-4 sm:mb-8 text-global-6">
 						Restez à jour avec les dernières actualités sur le Canada, les USA et
 						plus encore
 					</h2>
+
+					{/* Loading State */}
+					{loading ? (
+						<div className="flex justify-center items-center py-12">
+							<div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#4974A0]"></div>
+							<span className="ml-3 text-gray-600">Chargement des dernières actualités...</span>
+						</div>
+					) : (
+						<>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
 						{paginatedNews.map((news) => (
 							<div
@@ -250,6 +267,9 @@ const News = () => {
 									src={news.image}
 									alt={news.title}
 									className="w-full h-32 sm:h-44 object-cover"
+									onError={(e) => {
+										e.target.src = '/images/img_image_6.png'; // Fallback image
+									}}
 								/>
 								<div
 									className="p-3 sm:p-4 flex flex-col flex-1 border-2 border-[#4974A0] border-t-0  min-h-[180px] sm:min-h-[260px]"
@@ -264,9 +284,22 @@ const News = () => {
 									<p className="text-xs sm:text-sm flex-1 text-black font-barlow mb-0">
 										{getShortContent(news.content)}
 									</p>
-									<span className="text-[#4974A0] block font-barlow text-xs sm:text-sm font-bold mt-0 cursor-pointer">
-										Lire la suite
-									</span>
+									<div className="flex justify-between items-center mt-2">
+										<span className="text-[#4974A0] block font-barlow text-xs sm:text-sm font-bold cursor-pointer">
+											Lire la suite
+										</span>
+										{news.url && (
+											<a
+												href={news.url}
+												target="_blank"
+												rel="noopener noreferrer"
+												onClick={(e) => e.stopPropagation()}
+												className="text-[#4974A0] text-xs underline hover:opacity-80"
+											>
+												Source externe
+											</a>
+										)}
+									</div>
 								</div>
 							</div>
 						))}
@@ -281,6 +314,8 @@ const News = () => {
 						<span className="text-[#4974A0] font-barlow cursor-pointer text-xs sm:text-sm">{'>'}</span>
 						<span className="text-[#4974A0] font-barlow cursor-pointer text-xs sm:text-sm">Dernier</span>
 					</div>
+					</>
+					)}
 				</div>
 			)}
 
