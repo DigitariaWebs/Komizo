@@ -116,140 +116,214 @@ const Faq = () => {
 			<img
 				src="/images/map.svg"
 				alt=""
-				className="absolute left-0 top-0 w-[300px] opacity-20 pointer-events-none z-0"
+				className="absolute left-0 top-0 w-[300px] opacity-10 pointer-events-none z-0"
 				style={{ minWidth: 180, maxWidth: 340 }}
 			/>
 			<img
 				src="/images/img_ellipse_5.svg"
 				alt=""
-				className="absolute right-0 top-20 w-[180px] opacity-30 pointer-events-none z-0"
+				className="absolute right-0 top-20 w-[180px] opacity-20 pointer-events-none z-0"
 			/>
 			<img
 				src="/images/img_ellipse_7.svg"
 				alt=""
-				className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[320px] opacity-20 pointer-events-none z-0"
+				className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[320px] opacity-15 pointer-events-none z-0"
 			/>
 			<img
 				src="/images/img_ellipse_6_orange_300.svg"
 				alt=""
-				className="absolute left-0 bottom-0 w-[220px] opacity-30 pointer-events-none z-0"
+				className="absolute left-0 bottom-0 w-[220px] opacity-20 pointer-events-none z-0"
 			/>
+
+			{/* Header Section */}
+			<div className="w-full px-2 sm:px-4 py-8 relative z-10 bg-gradient-to-br from-global-2 via-global-2 to-gray-50">
+				<div className="max-w-6xl mx-auto text-center">
+					<div className="mb-8 sm:mb-12">
+						<p className="text-sm sm:text-base font-quattrocento font-bold text-global-5 mb-2">
+							Centre d'Aide
+						</p>
+						<h1 className="text-3xl sm:text-4xl lg:text-5xl font-quattrocento font-bold text-global-6 mb-4">
+							Questions Fréquentes
+						</h1>
+						<p className="text-base sm:text-lg text-global-4 max-w-3xl mx-auto">
+							Découvrez les réponses complètes à toutes vos questions sur nos services d'immigration,
+							de voyage et d'accompagnement. Notre équipe d'experts est là pour vous guider.
+						</p>
+					</div>
+				</div>
+			</div>
+
 			{/* Main FAQ Section */}
-			<div className="flex-1 w-full px-2 sm:px-4 py-8 sm:py-12 relative z-10 flex flex-col lg:flex-row gap-0">
+			<div className="flex-1 w-full px-2 sm:px-4 py-8 sm:py-12 relative z-10 flex flex-col lg:flex-row gap-8">
 				{/* Left: Questions */}
 				<div className="w-full lg:w-3/5 flex flex-col justify-start">
-					<h2 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-4 text-global-6 text-left">
-						Questions fréquentes
-					</h2>
-					<p className="text-sm sm:text-base text-global-4 mb-4 sm:mb-8 text-left">
-						Vous avez une question ? Consultez notre FAQ pour trouver rapidement une
-						réponse.
-					</p>
-					<div className="flex flex-col gap-3 sm:gap-4">
+					<div className="space-y-3 sm:space-y-4">
 						{paginatedFaqs.map((faq, idx) => {
 							const realIdx = (page - 1) * PAGE_SIZE + idx;
 							return (
 								<div
 									key={realIdx}
-									className="bg-white rounded-lg shadow transition border border-[#4974A0]/20"
+									className="bg-white rounded-xl shadow-sm border border-global-5/10 hover:shadow-md transition-all duration-300 overflow-hidden"
 								>
 									<button
-										className="w-full flex justify-between items-center px-4 sm:px-6 py-3 sm:py-4 text-left focus:outline-none"
+										className="w-full flex justify-between items-center px-4 sm:px-6 py-4 sm:py-5 text-left focus:outline-none group"
 										onClick={() => toggle(realIdx)}
 										aria-expanded={openIndex === realIdx}
 									>
-										<span className="text-base sm:text-lg font-semibold text-global-6">
+										<span className="text-base sm:text-lg font-semibold text-global-6 group-hover:text-global-5 transition-colors duration-200 pr-4">
 											{faq.question}
 										</span>
-										<svg
-											className={`w-5 h-5 text-global-4 transform transition-transform duration-200 ${
-												openIndex === realIdx ? 'rotate-180' : ''
-											}`}
-											fill="none"
-											stroke="currentColor"
-											strokeWidth={2}
-											viewBox="0 0 24 24"
-										>
-											<path
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												d="M19 9l-7 7-7-7"
-											/>
-										</svg>
+										<div className="flex-shrink-0">
+											<div className={`w-8 h-8 rounded-full bg-global-5/10 flex items-center justify-center transition-all duration-300 ${openIndex === realIdx ? 'bg-global-5 rotate-180' : 'group-hover:bg-global-5/20'
+												}`}>
+												<svg
+													className={`w-4 h-4 transition-colors duration-200 ${openIndex === realIdx ? 'text-white' : 'text-global-5'
+														}`}
+													fill="none"
+													stroke="currentColor"
+													strokeWidth={2.5}
+													viewBox="0 0 24 24"
+												>
+													<path
+														strokeLinecap="round"
+														strokeLinejoin="round"
+														d="M19 9l-7 7-7-7"
+													/>
+												</svg>
+											</div>
+										</div>
 									</button>
+
 									{openIndex === realIdx && (
-										<div className="px-4 sm:px-6 pb-3 sm:pb-4 text-global-2 text-sm sm:text-base">
-											{faq.answer}
+										<div className="px-4 sm:px-6 pb-4 sm:pb-5">
+											<div className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-lg p-4 border-l-4 border-global-5">
+												<p className="text-global-2 text-sm sm:text-base leading-relaxed">
+													{faq.answer}
+												</p>
+											</div>
 										</div>
 									)}
 								</div>
 							);
 						})}
 					</div>
-					{/* Pagination */}
-					<div className="flex flex-row items-center justify-start gap-2 sm:gap-3 mt-8 sm:mt-10">
+
+					{/* Enhanced Pagination */}
+					<div className="flex flex-row items-center justify-center gap-2 sm:gap-3 mt-8 sm:mt-10 bg-white rounded-xl p-4 shadow-sm border border-global-5/10">
 						<button
-							className={`text-[#4974A0] font-barlow cursor-pointer px-2 py-1 rounded text-xs sm:text-base ${
-								page === 1 ? 'opacity-50 pointer-events-none' : ''
+							className={`px-3 py-2 rounded-lg text-sm sm:text-base font-medium transition-all duration-200 ${page === 1
+									? 'text-gray-400 cursor-not-allowed'
+									: 'text-global-6 hover:bg-global-5/10 hover:text-global-5'
 							}`}
 							onClick={() => goToPage(1)}
+							disabled={page === 1}
 						>
 							Premier
 						</button>
 						<button
-							className={`text-[#4974A0] font-barlow cursor-pointer px-2 py-1 rounded text-xs sm:text-base ${
-								page === 1 ? 'opacity-50 pointer-events-none' : ''
+							className={`px-3 py-2 rounded-lg text-sm sm:text-base font-medium transition-all duration-200 ${page === 1
+									? 'text-gray-400 cursor-not-allowed'
+									: 'text-global-6 hover:bg-global-5/10 hover:text-global-5'
 							}`}
 							onClick={prevPage}
+							disabled={page === 1}
 						>
-							{'<'}
+							<svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+								<path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+							</svg>
 						</button>
-						{Array.from({ length: totalPages }, (_, i) => (
-							<button
-								key={i}
-								className={`font-barlow px-2 py-1 rounded text-xs sm:text-base ${
-									page === i + 1
-										? 'bg-[#4974A0] text-white font-bold'
-										: 'text-[#4974A0] hover:bg-[#4974A0]/10'
-								}`}
-								onClick={() => goToPage(i + 1)}
-							>
-								{i + 1}
-							</button>
-						))}
+
+						<div className="flex gap-1">
+							{Array.from({ length: totalPages }, (_, i) => (
+								<button
+									key={i}
+									className={`px-3 py-2 rounded-lg text-sm sm:text-base font-medium transition-all duration-200 ${page === i + 1
+											? 'bg-gradient-to-r from-global-5 to-global-6 text-white shadow-md'
+											: 'text-global-6 hover:bg-global-5/10 hover:text-global-5'
+										}`}
+									onClick={() => goToPage(i + 1)}
+								>
+									{i + 1}
+								</button>
+							))}
+						</div>
+
 						<button
-							className={`text-[#4974A0] font-barlow cursor-pointer px-2 py-1 rounded text-xs sm:text-base ${
-								page === totalPages ? 'opacity-50 pointer-events-none' : ''
+							className={`px-3 py-2 rounded-lg text-sm sm:text-base font-medium transition-all duration-200 ${page === totalPages
+									? 'text-gray-400 cursor-not-allowed'
+									: 'text-global-6 hover:bg-global-5/10 hover:text-global-5'
 							}`}
 							onClick={nextPage}
+							disabled={page === totalPages}
 						>
-							{'>'}
+							<svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+								<path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+							</svg>
 						</button>
 						<button
-							className={`text-[#4974A0] font-barlow cursor-pointer px-2 py-1 rounded text-xs sm:text-base ${
-								page === totalPages ? 'opacity-50 pointer-events-none' : ''
+							className={`px-3 py-2 rounded-lg text-sm sm:text-base font-medium transition-all duration-200 ${page === totalPages
+									? 'text-gray-400 cursor-not-allowed'
+									: 'text-global-6 hover:bg-global-5/10 hover:text-global-5'
 							}`}
 							onClick={() => goToPage(totalPages)}
+							disabled={page === totalPages}
 						>
 							Dernier
 						</button>
 					</div>
 				</div>
-				{/* Right: Overlapped Images */}
+
+				{/* Right: Overlapped Images with enhanced design */}
 				<div className="hidden lg:flex w-2/5 items-center justify-center relative">
-					<div className="w-full max-w-md">
-						<OverlappedImages
-							images={overlappedImages}
-						/>
+					<div className="w-full max-w-md relative">
+						{/* Background decoration */}
+						<div className="absolute -inset-4 bg-gradient-to-br from-global-5/5 to-global-6/5 rounded-2xl"></div>
+						<div className="relative">
+							<OverlappedImages images={overlappedImages} />
+						</div>
 					</div>
 				</div>
-				{/* Mobile: hide images below FAQ */}
-				{/* <div className="flex lg:hidden w-full justify-center mt-8">
-					<div className="w-full max-w-xs">
-						<OverlappedImages images={overlappedImages} />
-					</div>
-				</div> */}
 			</div>
+
+			{/* Contact CTA Section */}
+			<div className="w-full py-12 sm:py-16 px-2 sm:px-4 bg-gradient-to-r from-global-5 to-global-6 relative z-10">
+				<div className="max-w-4xl mx-auto text-center">
+					<h3 className="text-2xl sm:text-3xl font-quattrocento font-bold text-white mb-4">
+						Vous ne trouvez pas la réponse à votre question ?
+					</h3>
+					<p className="text-base sm:text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+						Notre équipe d'experts est disponible pour vous accompagner personnellement dans votre projet d'immigration ou de voyage.
+					</p>
+					<div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+						<a
+							href="/contact"
+							className="inline-flex items-center px-8 py-3 bg-white text-global-6 font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl group"
+						>
+							<span>Nous contacter</span>
+							<svg
+								className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200"
+								fill="none"
+								stroke="currentColor"
+								strokeWidth={2}
+								viewBox="0 0 24 24"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									d="M13 7l5 5m0 0l-5 5m5-5H6"
+								/>
+							</svg>
+						</a>
+						<div className="flex items-center text-white/80">
+							<svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+								<path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+							</svg>
+							<span className="text-sm">Réponse rapide garantie</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<Footer />
 		</div>
 	);

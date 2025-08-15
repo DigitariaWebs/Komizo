@@ -5,6 +5,7 @@ import Button from '../../components/ui/Button';
 import RatingBar from '../../components/ui/RatingBar';
 import OverlappedImages from '../../components/ui/OverlappedImages';
 import DestinationCard from '../../components/ui/DestinationCard';
+import FaqSection from '../../components/ui/FaqSection';
 
 const Home = () => {
   const destinations = [
@@ -366,6 +367,9 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      {/* FAQ Section */}
+      <FaqSection isHomePage={true} maxQuestions={5} />
 
       {/* Testimonials Section */}
       <div className="w-full max-w-[1596px] mx-auto mt-[91px] sm:mt-[136px] lg:mt-[182px] mb-[48px] sm:mb-[64px] lg:mb-[80px] overflow-visible">
