@@ -27,6 +27,7 @@ const Header = ({ hideLogoOnMobile = false }) => {
   const menuItems = [
     { text: 'Accueil', path: '/' },
     { text: 'À propos', path: '/about' },
+    { text: 'Services', path: '/services' },
     { text: 'Destination', path: '/destination' },
     { text: 'Conseil', path: '/news' },
     { text: 'Faq', path: '/faq' },
@@ -62,6 +63,7 @@ const Header = ({ hideLogoOnMobile = false }) => {
             {[
               { text: 'Accueil', path: '/' },
               { text: 'À propos', path: '/about' },
+              { text: 'Services', path: '/services' },
               { text: 'Destination', path: '/destination' },
               { text: 'Conseil', path: '/news' },
               { text: 'Faq', path: '/faq' },

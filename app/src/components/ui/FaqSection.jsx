@@ -122,14 +122,14 @@ const FaqSection = ({ isHomePage = false, maxQuestions = 5 }) => {
             <div className="text-center mt-10 sm:mt-12">
               <Link
                 to="/faq"
-                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-global-5 to-global-6 text-white font-semibold rounded-xl hover:from-global-6 hover:to-global-5 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 group"
+                              className="inline-flex items-center px-8 py-4 bg-button-1 text-white font-bold rounded-xl hover:bg-button-2 hover:shadow-2xl hover:scale-105 transition-all duration-300 shadow-xl group relative overflow-hidden"
               >
-                <span className="text-base sm:text-lg">Voir toutes les questions</span>
+                              <span className="text-base sm:text-lg font-bold relative z-10">Voir toutes les questions</span>
                 <svg
-                  className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform duration-300"
+                                  className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform duration-300 relative z-10"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth={2}
+                                  strokeWidth={2.5}
                   viewBox="0 0 24 24"
                 >
                   <path
@@ -139,7 +139,7 @@ const FaqSection = ({ isHomePage = false, maxQuestions = 5 }) => {
                   />
                 </svg>
               </Link>
-              <p className="text-sm text-global-4 mt-4">
+                          <p className="text-sm text-global-4 mt-4 font-medium">
                 Plus de 20 questions détaillées vous attendent
               </p>
             </div>

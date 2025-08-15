@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import HeroSection from '../../components/ui/HeroSection';
 import Footer from '../../components/common/Footer';
+import TikTokContent from '../../components/ui/TikTokContent';
 import { fetchUSAndCanadaNews, fetchImmigrationNews, getFallbackNews } from '../../services/newsService';
 
 function getShortContent(content, wordCount = 14) {
@@ -318,6 +319,9 @@ const News = () => {
 					)}
 				</div>
 			)}
+
+			{/* TikTok Content Section */}
+			<TikTokContent />
 
 			<Footer />
 		</div>

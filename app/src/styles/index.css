@@ -11,6 +11,7 @@ body {
 *, *::before, *::after {
   box-sizing: inherit;
 }
+
 /* FAQ Animation */
 @keyframes fadeIn {
   from {
@@ -26,4 +27,29 @@ body {
 
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-out;
+}
+
+/* Line clamp utilities */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
 }

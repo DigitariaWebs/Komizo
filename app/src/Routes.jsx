@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // Import page components
 import HomePage from './pages/Home';
 import About from './pages/Others/About';
+import Services from './pages/Others/Services';
 import Destination from './pages/Others/Destination';
 import News from './pages/Others/News';
 import Faq from './pages/Others/Faq';
@@ -15,6 +16,7 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
         <Route path="/destination" element={<Destination />} />
         <Route path="/news" element={<News />} />
         <Route path="/faq" element={<Faq />} />

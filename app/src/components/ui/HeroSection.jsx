@@ -4,8 +4,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const NAV_LINKS = [
   { text: 'Accueil', path: '/' },
   { text: 'À propos', path: '/about' },
+  { text: 'Services', path: '/services' },
   { text: 'Destination', path: '/destination' },
-  { text: 'Actualité', path: '/news' },
+  { text: 'Conseil', path: '/news' },
   { text: 'Faq', path: '/faq' },
   { text: 'Contact', path: '/contact' }
 ];
@@ -15,12 +16,16 @@ const PAGE_INFO = {
     title: 'À propos',
     description: "Découvrez qui nous sommes et notre mission pour faciliter vos voyages et projets d'immigration."
   },
+  '/services': {
+    title: 'Services',
+    description: "Découvrez nos services personnalisés pour vous accompagner dans toutes vos démarches d'immigration."
+  },
   '/destination': {
     title: 'Destination',
     description: "Explorez nos destinations populaires et trouvez celle qui correspond à vos envies d'évasion."
   },
   '/news': {
-    title: 'Actualité',
+    title: 'Conseil',
     description: "Restez informé avec nos conseils, actualités et inspirations pour voyager en toute sécurité."
   },
   '/faq': {

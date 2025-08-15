@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../../components/common/Header';
 import Footer from '../../components/common/Footer';
 import Button from '../../components/ui/Button';
@@ -207,6 +208,88 @@ const Home = () => {
         </div>
       </div>
 
+      {/* Services Teaser Section */}
+      <div className="w-full max-w-[1596px] mx-auto mt-[48px] sm:mt-[72px] lg:mt-[96px] overflow-hidden">
+        <div className="relative w-full">
+          <div className="relative z-10 px-4 sm:px-6 lg:px-[162px]">
+            {/* Section Header */}
+            <div className="text-center mb-[32px] sm:mb-[48px] lg:mb-[64px]">
+              <p className="text-[12px] sm:text-[18px] lg:text-[22px] font-quattrocento font-bold leading-[14px] sm:leading-[20px] lg:leading-[24px] text-global-7 mb-[8px]">
+                Nos Services
+              </p>
+              <h2 className="text-[24px] sm:text-[36px] lg:text-[48px] font-quattrocento font-bold leading-[32px] sm:leading-[48px] lg:leading-[64px] text-global-6 capitalize mb-[16px] sm:mb-[24px]">
+                Votre voyage commence ici
+              </h2>
+              <p className="text-[14px] sm:text-[16px] lg:text-[18px] font-quattrocento font-normal text-global-2 max-w-[600px] mx-auto mb-[32px] sm:mb-[48px]">
+                Découvrez nos services personnalisés pour vous accompagner dans toutes vos démarches d'immigration et de voyage. De la consultation à l'installation, nous sommes à vos côtés.
+              </p>
+            </div>
+
+            {/* Quick Services Preview */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[24px] sm:gap-[32px] mb-[32px] sm:mb-[48px]">
+              <div className="flex flex-col items-center text-center p-[16px] sm:p-[24px] rounded-lg bg-white shadow-sm border border-gray-100">
+                <div className="w-[48px] h-[48px] bg-button-1 rounded-full flex items-center justify-center mb-[16px]">
+                  <span className="text-white text-[20px] font-bold">📋</span>
+                </div>
+                <h3 className="text-[16px] sm:text-[18px] font-quattrocento font-bold text-global-6 mb-[8px]">
+                  Consultation
+                </h3>
+                <p className="text-[12px] sm:text-[14px] font-quattrocento text-global-2">
+                  Conseils personnalisés pour votre projet
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center text-center p-[16px] sm:p-[24px] rounded-lg bg-white shadow-sm border border-gray-100">
+                <div className="w-[48px] h-[48px] bg-button-1 rounded-full flex items-center justify-center mb-[16px]">
+                  <span className="text-white text-[20px] font-bold">📄</span>
+                </div>
+                <h3 className="text-[16px] sm:text-[18px] font-quattrocento font-bold text-global-6 mb-[8px]">
+                  Documentation
+                </h3>
+                <p className="text-[12px] sm:text-[14px] font-quattrocento text-global-2">
+                  Assistance pour vos démarches administratives
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center text-center p-[16px] sm:p-[24px] rounded-lg bg-white shadow-sm border border-gray-100">
+                <div className="w-[48px] h-[48px] bg-button-1 rounded-full flex items-center justify-center mb-[16px]">
+                  <span className="text-white text-[20px] font-bold">🏠</span>
+                </div>
+                <h3 className="text-[16px] sm:text-[18px] font-quattrocento font-bold text-global-6 mb-[8px]">
+                  Installation
+                </h3>
+                <p className="text-[12px] sm:text-[14px] font-quattrocento text-global-2">
+                  Support pour votre nouvelle vie
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center text-center p-[16px] sm:p-[24px] rounded-lg bg-white shadow-sm border border-gray-100">
+                <div className="w-[48px] h-[48px] bg-button-1 rounded-full flex items-center justify-center mb-[16px]">
+                  <span className="text-white text-[20px] font-bold">✈️</span>
+                </div>
+                <h3 className="text-[16px] sm:text-[18px] font-quattrocento font-bold text-global-6 mb-[8px]">
+                  Voyage
+                </h3>
+                <p className="text-[12px] sm:text-[14px] font-quattrocento text-global-2">
+                  Préparation complète de votre départ
+                </p>
+              </div>
+            </div>
+
+            {/* Call to Action */}
+            <div className="text-center">
+              <Link
+                to="/services"
+                className="inline-flex items-center gap-[8px] bg-button-1 hover:bg-button-2 text-white font-quattrocento font-bold text-[14px] sm:text-[16px] lg:text-[18px] px-[24px] sm:px-[32px] lg:px-[40px] py-[12px] sm:py-[16px] lg:py-[20px] rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
+              >
+                Découvrir tous nos services
+                <span className="text-[16px]">→</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Vision & Mission Section */}
       <div className="w-full max-w-[1596px] mx-auto mt-[42px] sm:mt-[63px] lg:mt-[84px] overflow-hidden">
         <div className="relative w-full">
@@ -286,7 +369,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Actualité Section (was Notre blog) */}
+      {/* Conseil Section (was Notre blog) */}
       <div className="w-full max-w-[1596px] mx-auto mt-[64px] sm:mt-[96px] lg:mt-[128px] px-4 sm:px-6 lg:px-[162px] overflow-hidden">
         <div className="relative w-full max-w-[1100px] mx-auto">
           {/* Decorative Ellipses */}
@@ -300,7 +383,7 @@ const Home = () => {
             {/* Section Header */}
             <div className="flex flex-col gap-[8px] sm:gap-[12px] lg:gap-[16px] w-full mb-[24px] sm:mb-[32px] lg:mb-[40px]">
               <p className="text-[12px] sm:text-[18px] lg:text-[22px] font-quattrocento font-bold leading-[14px] sm:leading-[20px] lg:leading-[24px] text-left text-global-7">
-                Actualité
+                Conseil
               </p>
               <div className="flex flex-col md:flex-row md:items-center w-full gap-2">
                 <h2 className="text-[18px] sm:text-[28px] lg:text-[36px] font-quattrocento font-bold leading-[24px] sm:leading-[36px] lg:leading-[48px] text-left text-global-6 capitalize">
